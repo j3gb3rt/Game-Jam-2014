@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyDamage : MonoBehaviour {
+public class PlayerDamage : MonoBehaviour {
 	int health;
 	int invuln;
 
