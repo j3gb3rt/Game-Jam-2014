@@ -17,7 +17,7 @@ public class MovingPlatform : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		initPosition = transform.position;
-		firstMovement = true;
+		//firstMovement = true;
 		if (initPosition.x < initPosition.x + xDistance) {
 			xMin = initPosition.x;
 			xMax = initPosition.x + xDistance;
@@ -29,7 +29,7 @@ public class MovingPlatform : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position.x += xDistance;
+		//transform.position.x += xDistance;
 
 
 		if (transform.position.x == initPosition.x) {
