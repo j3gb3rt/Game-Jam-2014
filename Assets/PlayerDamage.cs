@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class PlayerDamage : MonoBehaviour {
-	int health;
-	int invuln;
+	private int health;
+	private int invuln;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +27,9 @@ public class PlayerDamage : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider other) {
-		takeDamage ();
+		if (other.gameObject.name.Equals("Lava")) {
+				takeDamage ();
+		}
 	}
 
 	void Update() {

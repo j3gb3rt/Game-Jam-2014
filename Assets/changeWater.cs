@@ -15,12 +15,15 @@ public class changeWater : MonoBehaviour {
 		if (Input.GetKey ("1")) {
 			this.renderer.material = IceMaterial;
 			this.collider.isTrigger = false;
+			this.gameObject.name = "Ice";
 		} else if (Input.GetKey ("2")) {
 			this.renderer.material = LavaMaterial;
 			this.collider.isTrigger = true;
+			this.gameObject.name = "Lava";
 		} else if (Input.GetKey ("3")) {
 			this.renderer.material = WaterMaterial;
 			this.collider.isTrigger = true;
+			this.gameObject.name = "Water";
 		}
 	}
 }
