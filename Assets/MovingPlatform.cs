@@ -17,7 +17,10 @@ public class MovingPlatform : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		initPosition = transform.position;
-		//firstMovement = true;
+
+        xVelocity = xVelocity / 10;
+        yVelocity = yVelocity / 10;
+
 		if (initPosition.x < initPosition.x + xDistance) {
 			xMin = initPosition.x;
 			xMax = initPosition.x + xDistance;
@@ -25,17 +28,42 @@ public class MovingPlatform : MonoBehaviour {
 			xMin = initPosition.x + xDistance;
 			xMax = initPosition.x;
 		}
+
+        print("xmin" + xMin);
+        print("xmax" + xMax);
+
+        if (initPosition.y < initPosition.y + yDistance)
+        {
+            yMin = initPosition.y;
+            yMax = initPosition.y + yDistance;
+        }
+        else
+        {
+            yMin = initPosition.y + yDistance;
+            yMax = initPosition.y;
+        }
+
+        print("ymin" + yMin);
+        print("ymax" + yMax);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//transform.position.x += xDistance;
+        float updatedX;
+        float updatedY;
+        
+        updatedX = transform.position.x + xVelocity;
+        updatedY = transform.position.y + yVelocity;
 
+        transform.position = new Vector3(updatedX, updatedY, transform.position.z);
 
-		if (transform.position.x == initPosition.x) {
-
+		if ((transform.position.x < xMin) || (transform.position.x > xMax )) {
+            xVelocity = -1 * xVelocity;
 		}
-		else if (transform.position.x == (initPosition.x + xVelocity)) {
+        if ((transform.position.y < yMin) || (transform.position.y > yMax))
+        {
+            yVelocity = -1 * yVelocity;
 
 		}
 	}
