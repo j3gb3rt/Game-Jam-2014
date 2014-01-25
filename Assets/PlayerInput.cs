@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour {
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x + 1.5f, this.rigidbody.velocity.y, this.rigidbody.velocity.z);
 		}
 		if (Input.GetKeyDown ("space") && jump > 0){	// recommended gravity is Y=-40;
-			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, 20, this.rigidbody.velocity.z);
+			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, 25, this.rigidbody.velocity.z);
 		}
 		if (Input.GetKeyDown ("j")){
 			//fireball fire = (fireball) Instantiate (fireball, transform.position, transform.rotation);
