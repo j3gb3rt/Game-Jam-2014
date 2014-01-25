@@ -27,7 +27,10 @@ public class PlayerDamage : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider other) {
-		if (other.gameObject.name.Equals("Lava")) {
+        print("transform name" + other.transform.name);
+        print("gameObject name" + other.gameObject.name);
+
+        if (other.gameObject.name.Equals("Lava")) {
 				takeDamage ();
 		}
 	}
