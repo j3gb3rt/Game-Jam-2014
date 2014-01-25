@@ -12,11 +12,11 @@ public class changeLand : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey ("1")) {
+		if (Input.GetKey ("1") || Input.GetKey(KeyCode.Keypad1)) {
 			this.renderer.material = FrostMaterial;
-		} else if (Input.GetKey ("2")) {
+		} else if (Input.GetKey ("2") || Input.GetKey(KeyCode.Keypad2)) {
 			this.renderer.material = FireMaterial;
-		} else if (Input.GetKey ("3")) {
+		} else if (Input.GetKey ("3") || Input.GetKey(KeyCode.Keypad3)) {
 			this.renderer.material = NatureMaterial;
 		}
 
