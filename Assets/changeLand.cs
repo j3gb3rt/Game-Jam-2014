@@ -2,10 +2,12 @@
 using System.Collections;
 
 public class changeLand : MonoBehaviour {
+	private Material NatureMaterial, IceMaterial, FireMaterial;
 
-	// Use this for initialization
 	void Start () {
-	
+		FireMaterial = Resources.Load<Material>("Fire_Color");
+		IceMaterial = Resources.Load<Material>("Ice_Color");
+		NatureMaterial = Resources.Load<Material>("Nature_Color");
 	}
 	
 	// Update is called once per frame
