@@ -22,6 +22,5 @@ public class changeWater : MonoBehaviour {
 			this.renderer.material = WaterMaterial;
 			this.collider.isTrigger = true;
 		}
-		
 	}
 }
