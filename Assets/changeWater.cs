@@ -12,15 +12,20 @@ public class changeWater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey ("1")) {
+        if (Input.GetKey("1") || Input.GetKey(KeyCode.Keypad1))
+        {
 			this.renderer.material = IceMaterial;
 			this.collider.isTrigger = false;
 			this.gameObject.name = "Ice";
-		} else if (Input.GetKey ("2")) {
+        }
+        else if (Input.GetKey("2") || Input.GetKey(KeyCode.Keypad2))
+        {
 			this.renderer.material = LavaMaterial;
 			this.collider.isTrigger = true;
 			this.gameObject.name = "Lava";
-		} else if (Input.GetKey ("3")) {
+        }
+        else if (Input.GetKey("3") || Input.GetKey(KeyCode.Keypad3))
+        {
 			this.renderer.material = WaterMaterial;
 			this.collider.isTrigger = true;
 			this.gameObject.name = "Water";
