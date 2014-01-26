@@ -10,6 +10,9 @@ public class PlayerInput : MonoBehaviour {
 	private bool shielded;
 	private GameObject heldShield;
 
+    private float distToGround;
+    private Animator anim;
+
 	// Use this for initialization
 	void Start () {
 		jump = 0;
@@ -20,6 +23,9 @@ public class PlayerInput : MonoBehaviour {
 		facing = 1;
 		world = 1;
 		cooldown = 0;
+
+        distToGround = collider.bounds.extents.y;
+        anim = this.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -49,11 +55,11 @@ public class PlayerInput : MonoBehaviour {
 			world = 3;
 		}
 
-		if (Input.GetKeyDown ("j") && world == 1) {
-			heldShield = (GameObject)Instantiate (shield, transform.position, transform.localRotation);
-			heldShield.transform.Rotate(0, 0, 90);
-			shielded = true;
-		}
+        //if (Input.GetKeyDown ("j") && world == 1) {
+        //    heldShield = (GameObject)Instantiate (shield, transform.position, transform.localRotation);
+        //    heldShield.transform.Rotate(0, 0, 90);
+        //    shielded = true;
+        //}
 
 		if (Input.GetKey ("j")){
 			if(cooldown < 1) {
@@ -82,7 +88,20 @@ public class PlayerInput : MonoBehaviour {
 			shielded = false;
 		}
 
+        print("moving " + IsMoving() + ", grounded " + IsGrounded() + ", dist from ground " + (distToGround + 0.1f));
+        anim.SetBool("Moving", IsMoving());
+        anim.SetBool("Grounded", IsGrounded());
+
 	}
+
+    void FixedUpdate()
+    {
+        if (Input.GetKeyDown("k") && IsGrounded())
+        {
+            this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, 25, this.rigidbody.velocity.z);
+        }
+
+    }
 
 	void shootFireball(){
 			if (facing == 0) {
@@ -113,4 +132,15 @@ public class PlayerInput : MonoBehaviour {
 	void OnCollisionExit(){
 		jump--;
 	}
+
+    bool IsMoving()
+    {
+        return (Mathf.Abs(this.rigidbody.velocity.magnitude) > .5);
+    }
+
+    bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, (distToGround + 0.1f));
+    }
+
 }

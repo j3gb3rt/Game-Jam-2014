@@ -5,9 +5,9 @@ public class changeLand : MonoBehaviour {
 	private Material NatureMaterial, FrostMaterial, FireMaterial;
 
 	void Start () {
-		FireMaterial = Resources.Load<Material>("Fire_Color");
-		FrostMaterial = Resources.Load<Material>("Frost_Color");
-		NatureMaterial = Resources.Load<Material>("Nature_Color");
+		FireMaterial = Resources.Load<Material>("Materials/fire_platform");
+        FrostMaterial = Resources.Load<Material>("Materials/ice_platform");
+        NatureMaterial = Resources.Load<Material>("Materials/nature_platform");
 
         this.renderer.material = FrostMaterial;
 	}
