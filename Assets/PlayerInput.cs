@@ -12,6 +12,8 @@ public class PlayerInput : MonoBehaviour {
 
     private float distToGround;
     private Animator anim;
+    private Vector3 previousCameraLocation;
+    private Quaternion previousCameraRotation;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +28,7 @@ public class PlayerInput : MonoBehaviour {
 
         distToGround = collider.bounds.extents.y;
         anim = this.GetComponent<Animator>();
+
 	}
 	
 	// Update is called once per frame
@@ -35,11 +38,30 @@ public class PlayerInput : MonoBehaviour {
 
 		if (Input.GetKey ("a") && this.rigidbody.velocity.x > -15){
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x - 1.5f, this.rigidbody.velocity.y, this.rigidbody.velocity.z);
-			facing = 0;
+            if (facing != 0)
+            {
+                facing = 0;
+                previousCameraLocation = this.GetComponentInChildren<Camera>().transform.position;
+                previousCameraRotation = this.GetComponentInChildren<Camera>().transform.rotation;
+                this.transform.Rotate(new Vector3(0, 180, 0));
+               
+                //this.GetComponentInChildren<Camera>().transform.Rotate(new Vector3(0, -180, 0));
+                this.GetComponentInChildren<Camera>().transform.position = previousCameraLocation;
+                this.GetComponentInChildren<Camera>().transform.rotation = previousCameraRotation;
+            }
 		}
 		if (Input.GetKey ("d") && this.rigidbody.velocity.x < 15){
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x + 1.5f, this.rigidbody.velocity.y, this.rigidbody.velocity.z);
-			facing = 1;
+            if (facing != 1)
+            {
+                previousCameraLocation = this.GetComponentInChildren<Camera>().transform.position;
+                previousCameraRotation = this.GetComponentInChildren<Camera>().transform.rotation;
+                this.transform.Rotate(new Vector3(0, 180, 0));
+
+                //this.GetComponentInChildren<Camera>().transform.Rotate(new Vector3(0, -180, 0));
+                this.GetComponentInChildren<Camera>().transform.position = previousCameraLocation;
+                this.GetComponentInChildren<Camera>().transform.rotation = previousCameraRotation;
+            }
 		}
 		if (Input.GetKeyDown ("k") && jump > 0){	// recommended gravity is Y=-40;
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, 25, this.rigidbody.velocity.z);
@@ -66,10 +88,10 @@ public class PlayerInput : MonoBehaviour {
 				if(world == 1) {
 					if(shielded) {
 						if(facing == 0) {
-							heldShield.transform.position = this.transform.position - new Vector3(2,0,0);
+							heldShield.transform.position = this.transform.position - new Vector3(2,-2.5f,0);
 						}
 						else {
-							heldShield.transform.position = this.transform.position + new Vector3(2,0,0);
+							heldShield.transform.position = this.transform.position + new Vector3(2,2.5f,0);
 						}
 					}
 				}
@@ -105,11 +127,10 @@ public class PlayerInput : MonoBehaviour {
 
 	void shootFireball(){
 			if (facing == 0) {
-				GameObject thisBoom = (GameObject)Instantiate (fire, transform.position - new Vector3(2f,0f,0f), transform.localRotation);
-				thisBoom.transform.Rotate (0,90,0);
+				GameObject thisBoom = (GameObject)Instantiate (fire, transform.position - new Vector3(2f,-2.5f,0f), transform.localRotation);
 				thisBoom.rigidbody.velocity = new Vector3(-speed, 0, 0);
 			} else {
-				GameObject thisBoom = (GameObject)Instantiate (fire, transform.position + new Vector3(2f,0f,0f), transform.localRotation);
+				GameObject thisBoom = (GameObject)Instantiate (fire, transform.position + new Vector3(2f,2.5f,0f), transform.localRotation);
 				thisBoom.transform.Rotate (0,-90,0);
 				thisBoom.rigidbody.velocity = new Vector3(speed, 0, 0);
 			}
@@ -117,10 +138,12 @@ public class PlayerInput : MonoBehaviour {
 
 	void throwSeed(){
 			if (facing == 0) {
-				GameObject thisSeed = (GameObject)Instantiate (seed, transform.position - new Vector3(2f,0f,0f), transform.localRotation);
+				GameObject thisSeed = (GameObject)Instantiate (seed, transform.position - new Vector3(2f,-2.5f,0f), transform.localRotation);
 				thisSeed.rigidbody.velocity = new Vector3(-speed, 0, 0);
+                thisSeed.transform.Rotate(0, 90, 0);
 			} else {
-				GameObject thisSeed = (GameObject)Instantiate (seed, transform.position + new Vector3(2f,0f,0f), transform.localRotation);
+				GameObject thisSeed = (GameObject)Instantiate (seed, transform.position + new Vector3(2f,2.5f,0f), transform.localRotation);
+                thisSeed.transform.Rotate(0, -90, 0);
 				thisSeed.rigidbody.velocity = new Vector3(speed, 0, 0);
 			}
 		}
