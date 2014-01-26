@@ -27,13 +27,14 @@ public class PlayerDamage : MonoBehaviour {
 	void takeDamage(int d) {
 		if (invuln < 1) {
 			health -= d;
-			invuln = 100;
-			transform.Rotate(new Vector3(0,30,0));
+			invuln = 75;
+			//transform.Rotate(new Vector3(0,30,0));
 		}
 	}
 
     void respawn()
     {
+        this.rigidbody.velocity = new Vector3(0,0,0);
         transform.position = spawnPoint;
         transform.rotation = spawnRotation;
         health = 3;
@@ -51,6 +52,10 @@ public class PlayerDamage : MonoBehaviour {
 
     void OnCollisionEnter(Collision collisionInfo)
     {
+        if (collisionInfo.gameObject.name.Equals("enemy") || collisionInfo.gameObject.name.Equals("Sanic"))
+        {
+            takeDamage();
+        }
         if (collisionInfo.gameObject.name.Equals("Ground_Plate"))
         {
             respawn();
@@ -73,5 +78,10 @@ public class PlayerDamage : MonoBehaviour {
             respawn();
             //Transform.Destroy (gameObject);
 		}
+
+        if (transform.position.y < -500)
+        {
+            takeDamage();
+        }
 	}
 }
