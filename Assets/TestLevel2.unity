@@ -780,7 +780,7 @@ Transform:
   m_PrefabInternal: {fileID: 1125970636}
   m_GameObject: {fileID: 520615283}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 11, z: 10}
+  m_LocalPosition: {x: 99.9448013, y: 11, z: 10}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1525270145}
@@ -1155,8 +1155,8 @@ Transform:
   m_PrefabInternal: {fileID: 1402007447}
   m_GameObject: {fileID: 698101036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 270.3302, y: 21.5900021, z: 10}
-  m_LocalScale: {x: 50, y: 4, z: 3}
+  m_LocalPosition: {x: 270.3302, y: 11.315588, z: 10}
+  m_LocalScale: {x: 50, y: .5, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &699477065
@@ -2021,7 +2021,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400004, guid: 5ee7d2c608a961348b3a33055bd24e0f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: 99.9448013
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 5ee7d2c608a961348b3a33055bd24e0f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2677,7 +2677,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b754ae4a3fd206140ae1740c39886df2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 21.5900021
+      value: 11.315588
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b754ae4a3fd206140ae1740c39886df2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2698,6 +2698,10 @@ Prefab:
     - target: {fileID: 400000, guid: b754ae4a3fd206140ae1740c39886df2, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: b754ae4a3fd206140ae1740c39886df2, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b754ae4a3fd206140ae1740c39886df2, type: 2}
@@ -4648,7 +4652,7 @@ GameObject:
   - 4: {fileID: 2114652006}
   - 65: {fileID: 2114652005}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: checkpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4673,7 +4677,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2114652004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 230.838593, y: 25.8474007, z: 10}
+  m_LocalPosition: {x: 230.838593, y: 17.1188545, z: 10}
   m_LocalScale: {x: 1, y: 30, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
