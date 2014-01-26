@@ -55,11 +55,11 @@ public class PlayerInput : MonoBehaviour {
 			world = 3;
 		}
 
-        //if (Input.GetKeyDown ("j") && world == 1) {
-        //    heldShield = (GameObject)Instantiate (shield, transform.position, transform.localRotation);
-        //    heldShield.transform.Rotate(0, 0, 90);
-        //    shielded = true;
-        //}
+        if (Input.GetKeyDown ("j") && world == 1) {
+            heldShield = (GameObject)Instantiate (shield, transform.position, transform.localRotation);
+            heldShield.transform.Rotate(0, 0, 90);
+            shielded = true;
+        }
 
 		if (Input.GetKey ("j")){
 			if(cooldown < 1) {
