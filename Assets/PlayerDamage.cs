@@ -6,6 +6,7 @@ public class PlayerDamage : MonoBehaviour {
 	private int invuln;
     private Vector3 spawnPoint;
     private Quaternion spawnRotation;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,8 @@ public class PlayerDamage : MonoBehaviour {
 		if (invuln < 1) {
 			health -= 1;
 			invuln = 75;
-			transform.Rotate(new Vector3(0,30,0));
+			//transform.Rotate(new Vector3(0,30,0));
+            
 		}
 	}
 
@@ -57,6 +59,7 @@ public class PlayerDamage : MonoBehaviour {
     }
 
 	void Update() {
+        healthbard.health = health;
 		//Debug Code to test damage. Delete before shipping.
 		if (Input.GetKeyDown ("p")) {
 			takeDamage ();
