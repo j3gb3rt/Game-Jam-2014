@@ -17,7 +17,7 @@ public class SeedBehavior : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other) {
 		if(other.gameObject.tag.Equals("Ground")) {
-			GameObject tree = Resources.Load<GameObject>("GrownTree");
+			GameObject tree = Resources.Load<GameObject>("GrownTree2");
 			Instantiate(tree, transform.position, transform.localRotation);
 		}
 		Transform.Destroy (gameObject);

@@ -41,6 +41,10 @@ TagManager:
   User Layer 30: 
   User Layer 31: 
   m_SortingLayers:
+  - name: Trees
+    userID: 1
+    uniqueID: 1193789199
+    locked: 1
   - name: Default
     userID: 0
     uniqueID: 0
