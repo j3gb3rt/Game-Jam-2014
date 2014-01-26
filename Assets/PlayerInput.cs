@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerInput : MonoBehaviour {
 	int jump;
-	public GameObject fire, seed, shield;
+	public GameObject fire, seed, shield, iceThrow;
 	private float speed;
 	private int facing, world;
 	private int cooldown;
@@ -22,6 +22,7 @@ public class PlayerInput : MonoBehaviour {
 		fire = Resources.Load<GameObject>("fireball");
 		seed = Resources.Load<GameObject> ("Seed");
 		shield = Resources.Load<GameObject> ("Shield");
+		iceThrow = Resources.Load<GameObject> ("Ice_Particles");
 		facing = 1;
 		world = 1;
 		cooldown = 0;
@@ -83,6 +84,8 @@ public class PlayerInput : MonoBehaviour {
         if (Input.GetKeyDown ("j") && world == 1) {
             heldShield = (GameObject)Instantiate (shield, transform.position + new Vector3(0, 90, 0), transform.localRotation);
             heldShield.transform.Rotate(0, 0, 90);
+			iceThrow = (GameObject)Instantiate (iceThrow, transform.position + new Vector3(0, 90, 0), transform.localRotation);
+			iceThrow.transform.Rotate(0, 0, 90);
             shielded = true;
         }
 
@@ -92,9 +95,10 @@ public class PlayerInput : MonoBehaviour {
 					if(shielded) {
 						if(facing == 0) {
 							heldShield.transform.position = this.transform.position - new Vector3(3f,-2.5f,0f);
+							iceThrow.transform.position = this.transform.position - new Vector3(0f,-2.5f,0f);
 						}
 						else {
-							heldShield.transform.position = this.transform.position + new Vector3(3f,2.5f,0f);
+							iceThrow.transform.position = this.transform.position + new Vector3(3f,2.5f,0f);
 						}
 					}
 				}
@@ -110,6 +114,7 @@ public class PlayerInput : MonoBehaviour {
 		}
 		if(Input.GetKeyUp ("j")) {
 			Transform.Destroy(heldShield);
+			Transform.Destroy(iceThrow);
 			shielded = false;
 		}
 
