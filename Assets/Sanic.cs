@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Sanic : MonoBehaviour {
-    int face = 0;
+    public int face = 0;
     public Transform player;
     int rage = 1;
 	// Use this for initialization
