@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerInput : MonoBehaviour {
 	int jump;
-	public GameObject fire;
+	public GameObject fire, seed, shield;
 	private float speed;
 	private int facing, world;
 
@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour {
 		jump = 0;
 		speed = 20f;
 		fire = Resources.Load<GameObject>("fireball");
+		seed = Resources.Load<GameObject> ("Seed");
 		facing = 1;
 	}
 	
@@ -31,22 +32,37 @@ public class PlayerInput : MonoBehaviour {
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, 25, this.rigidbody.velocity.z);
 		}
 		if (Input.GetKeyDown ("j")){
-			shootFireball();
+			//if(world == 2) {
+				shootFireball();
+			//}
+			//else throwSeed();
 		}
 
 	}
 
 	void shootFireball(){
-		if (facing == 0) {
-			GameObject thisBoom = (GameObject)Instantiate (fire, transform.position - new Vector3(2f,0f,0f), transform.localRotation);
-			thisBoom.transform.Rotate (0,90,0);
-			thisBoom.rigidbody.velocity = new Vector3(-speed, 0, 0);
-		} else {
-			GameObject thisBoom = (GameObject)Instantiate (fire, transform.position + new Vector3(2f,0f,0f), transform.localRotation);
-			thisBoom.transform.Rotate (0,-90,0);
-			thisBoom.rigidbody.velocity = new Vector3(speed, 0, 0);
+			if (facing == 0) {
+				GameObject thisBoom = (GameObject)Instantiate (fire, transform.position - new Vector3(2f,0f,0f), transform.localRotation);
+				thisBoom.transform.Rotate (0,90,0);
+				thisBoom.rigidbody.velocity = new Vector3(-speed, 0, 0);
+			} else {
+				GameObject thisBoom = (GameObject)Instantiate (fire, transform.position + new Vector3(2f,0f,0f), transform.localRotation);
+				thisBoom.transform.Rotate (0,-90,0);
+				thisBoom.rigidbody.velocity = new Vector3(speed, 0, 0);
+			}
 		}
-	}
+
+	void throwSeed(){
+			if (facing == 0) {
+				GameObject thisSeed = (GameObject)Instantiate (seed, transform.position - new Vector3(2f,0f,0f), transform.localRotation);
+				thisSeed.transform.Rotate (0,90,0);
+				thisSeed.rigidbody.velocity = new Vector3(-speed, 0, 0);
+			} else {
+				GameObject thisSeed = (GameObject)Instantiate (seed, transform.position + new Vector3(2f,0f,0f), transform.localRotation);
+				thisSeed.transform.Rotate (0,-90,0);
+				thisSeed.rigidbody.velocity = new Vector3(speed, 0, 0);
+			}
+		}
 
 	void OnCollisionEnter(){
 		jump++;
