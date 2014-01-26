@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Stupid_Bounce : MonoBehaviour {
+public class Shied_Bounce : MonoBehaviour {
 
     public float modifier;
     // Use this for initialization
 	void Start () {
-		
+		modifier = 100f;
 	}
 	
     void OnCollisionExit(Collision collisionInfo) {
-        if (collisionInfo.gameObject.name.Equals("enemy")) {
-            this.rigidbody.velocity = modifier * this.rigidbody.velocity;
+        if (collisionInfo.gameObject.tag.Equals("enemy")) {
+            collisionInfo.gameObject.rigidbody.velocity = modifier * collisionInfo.gameObject.rigidbody.velocity;
         }
     }
 

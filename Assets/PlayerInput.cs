@@ -45,6 +45,9 @@ public class PlayerInput : MonoBehaviour {
 
 
 		if (Input.GetKeyDown ("j")){
+			if(world == 1) {
+
+			}
 			if(world == 2) {
 				shootFireball();
 			}
