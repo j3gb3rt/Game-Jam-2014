@@ -79,9 +79,9 @@ public class PlayerDamage : MonoBehaviour {
             //Transform.Destroy (gameObject);
 		}
 
-        if (transform.position.y < -500)
+        if (transform.position.y < -200)
         {
-            takeDamage();
+            takeDamage(3);
         }
 	}
 }
