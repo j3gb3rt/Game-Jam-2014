@@ -5,8 +5,8 @@ public class SeedGrowing : MonoBehaviour {
 	int timer;
 	// Use this for initialization
 	void Start () {
-		rigidbody.velocity = new Vector3 (0, 5, 0);
-		timer = 15;
+		rigidbody.velocity = new Vector3 (0, 10, 0);
+		timer = 25;
 	}
 	
 	// Update is called once per frame
