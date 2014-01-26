@@ -13,13 +13,34 @@ public class MovingPlatform : MonoBehaviour {
 	private float xMax;
 	private float yMin;
 	private float yMax;
-	
+    private bool lastVelFlipLeft;
+    private bool lastVelFlipDown;
+
 	// Use this for initialization
 	void Start () {
 		initPosition = transform.position;
 
-        xVelocity = xVelocity / 10;
-        yVelocity = yVelocity / 10;
+        if (xVelocity > 0)
+        {
+            lastVelFlipLeft = true;
+        }
+        else
+        {
+            lastVelFlipLeft = false;
+        }
+
+        if (yVelocity > 0)
+        {
+            lastVelFlipDown = true;
+        }
+        else
+        {
+            lastVelFlipDown = false;
+        }
+
+
+        //xVelocity = xVelocity;
+        //yVelocity = yVelocity;
 
 		if (initPosition.x < initPosition.x + xDistance) {
 			xMin = initPosition.x;
@@ -50,21 +71,34 @@ public class MovingPlatform : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float updatedX;
-        float updatedY;
+        //float updatedX;
+        //float updatedY;
         
-        updatedX = transform.position.x + xVelocity;
-        updatedY = transform.position.y + yVelocity;
+        //updatedX = transform.position.x + xVelocity;
+        //updatedY = transform.position.y + yVelocity;
 
-        transform.position = new Vector3(updatedX, updatedY, transform.position.z);
+        this.rigidbody.velocity = new Vector3(xVelocity, yVelocity, 0f);
 
-		if ((transform.position.x < xMin) || (transform.position.x > xMax )) {
+        //transform.position = new Vector3(updatedX, updatedY, transform.position.z);
+
+		if ((transform.position.x < xMin) &&  !lastVelFlipLeft) {
             xVelocity = -1 * xVelocity;
-		}
-        if ((transform.position.y < yMin) || (transform.position.y > yMax))
-        {
-            yVelocity = -1 * yVelocity;
+            lastVelFlipLeft = true;
+        }
+        
+        if ((transform.position.x > xMax) &&  lastVelFlipLeft) {
+            xVelocity = -1 * xVelocity;
+            lastVelFlipLeft = false;
+        }
 
-		}
+        if ((transform.position.y < yMin) && !lastVelFlipDown) {
+            yVelocity = -1 * yVelocity;
+            lastVelFlipDown = true;
+        }
+
+        if ((transform.position.x > xMax) && lastVelFlipDown) {
+            yVelocity = -1 * yVelocity;
+            lastVelFlipDown = false;
+        }
 	}
 }
