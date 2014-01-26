@@ -54,6 +54,7 @@ public class PlayerInput : MonoBehaviour {
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x + 1.5f, this.rigidbody.velocity.y, this.rigidbody.velocity.z);
             if (facing != 1)
             {
+                facing = 1;
                 previousCameraLocation = this.GetComponentInChildren<Camera>().transform.position;
                 previousCameraRotation = this.GetComponentInChildren<Camera>().transform.rotation;
                 this.transform.Rotate(new Vector3(0, 180, 0));
