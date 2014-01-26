@@ -11,6 +11,8 @@ public class changeWater : MonoBehaviour {
 		WaterMaterial = Resources.Load<Material>("Water_Color");
 
         IcePhysics = Resources.Load<PhysicMaterial>("ice_physics");
+
+        this.renderer.material = IceMaterial;
 	}
 	
 	// Update is called once per frame

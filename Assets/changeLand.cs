@@ -8,6 +8,8 @@ public class changeLand : MonoBehaviour {
 		FireMaterial = Resources.Load<Material>("Fire_Color");
 		FrostMaterial = Resources.Load<Material>("Frost_Color");
 		NatureMaterial = Resources.Load<Material>("Nature_Color");
+
+        this.renderer.material = FrostMaterial;
 	}
 	
 	// Update is called once per frame
