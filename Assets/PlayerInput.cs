@@ -67,13 +67,15 @@ public class PlayerInput : MonoBehaviour {
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, 25, this.rigidbody.velocity.z);
 		}
 
-		if (Input.GetKeyDown ("1")) {
+        if (Input.GetKeyDown("1") || Input.GetKeyDown(KeyCode.Keypad1))
+        {
 			world = 1;
 		}
-		if (Input.GetKeyDown ("2")) {
+        if (Input.GetKeyDown("2") || Input.GetKeyDown(KeyCode.Keypad2))
+        {
 			world = 2;
 		}
-		if (Input.GetKeyDown ("3")) {
+		if (Input.GetKeyDown ("3") || Input.GetKeyDown(KeyCode.Keypad3)) {
 			world = 3;
 		}
 

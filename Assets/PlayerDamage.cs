@@ -12,7 +12,7 @@ public class PlayerDamage : MonoBehaviour {
 	void Start () {
 		health = 3;
         spawnPoint = transform.position;
-        spawnRotation = transform.rotation;
+        //spawnRotation = transform.rotation;
 	}
 
 	void takeDamage() {
@@ -36,7 +36,7 @@ public class PlayerDamage : MonoBehaviour {
     {
         this.rigidbody.velocity = new Vector3(0,0,0);
         transform.position = spawnPoint;
-        transform.rotation = spawnRotation;
+        //transform.rotation = spawnRotation;
         health = 3;
     }
 
