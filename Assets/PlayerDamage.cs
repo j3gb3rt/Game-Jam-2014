@@ -58,7 +58,7 @@ public class PlayerDamage : MonoBehaviour {
 
 	void Update() {
 		//Debug Code to test damage. Delete before shipping.
-		if (Input.GetKeyDown ("k")) {
+		if (Input.GetKeyDown ("p")) {
 			takeDamage ();
 		} //end of debug code
 

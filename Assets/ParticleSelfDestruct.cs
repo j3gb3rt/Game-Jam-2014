@@ -11,6 +11,6 @@ public class ParticleSelfDestruct : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (this.particleSystem.isStopped)
-						Transform.Destroy (gameObject);
+			Transform.Destroy (gameObject);
 	}
 }

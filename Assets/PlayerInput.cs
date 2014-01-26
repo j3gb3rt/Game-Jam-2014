@@ -27,7 +27,7 @@ public class PlayerInput : MonoBehaviour {
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x + 1.5f, this.rigidbody.velocity.y, this.rigidbody.velocity.z);
 			facing = 1;
 		}
-		if (Input.GetKeyDown ("space") && jump > 0){	// recommended gravity is Y=-40;
+		if (Input.GetKeyDown ("k") && jump > 0){	// recommended gravity is Y=-40;
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, 25, this.rigidbody.velocity.z);
 		}
 		if (Input.GetKeyDown ("j")){
