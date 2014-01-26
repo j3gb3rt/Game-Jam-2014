@@ -4,10 +4,14 @@ using System.Collections;
 public class PlayerDamage : MonoBehaviour {
 	private int health;
 	private int invuln;
+    private Vector3 spawnPoint;
+    private Quaternion spawnRotation;
 
 	// Use this for initialization
 	void Start () {
 		health = 3;
+        spawnPoint = transform.position;
+        spawnRotation = transform.rotation;
 	}
 
 	void takeDamage() {
@@ -26,14 +30,31 @@ public class PlayerDamage : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerStay(Collider other) {
-        print("transform name" + other.transform.name);
-        print("gameObject name" + other.gameObject.name);
+    void respawn()
+    {
+        transform.position = spawnPoint;
+        transform.rotation = spawnRotation;
+        health = 3;
+    }
 
+	void OnTriggerStay(Collider other) {
         if (other.gameObject.name.Equals("Lava")) {
 				takeDamage ();
 		}
+        if (other.gameObject.name.Equals("Checkpoint"))
+        {
+            spawnPoint = transform.position;
+        }
 	}
+
+    void OnCollisionEnter(Collision collisionInfo)
+    {
+        if (collisionInfo.gameObject.name.Equals("Ground_Plate"))
+        {
+            respawn();
+
+        }
+    }
 
 	void Update() {
 		//Debug Code to test damage. Delete before shipping.
@@ -46,7 +67,8 @@ public class PlayerDamage : MonoBehaviour {
 		}
 
 		if (health <= 0) {
-			Transform.Destroy (gameObject);
+            respawn();
+            //Transform.Destroy (gameObject);
 		}
 	}
 }
