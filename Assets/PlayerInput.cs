@@ -5,7 +5,7 @@ public class PlayerInput : MonoBehaviour {
 	int jump;
 	public GameObject fire;
 	private float speed;
-	private int facing;
+	private int facing, world;
 
 	// Use this for initialization
 	void Start () {
@@ -38,11 +38,11 @@ public class PlayerInput : MonoBehaviour {
 
 	void shootFireball(){
 		if (facing == 0) {
-			GameObject thisBoom = (GameObject)Instantiate (fire, transform.position - new Vector3(1.5f,0f,0f), transform.localRotation);
+			GameObject thisBoom = (GameObject)Instantiate (fire, transform.position - new Vector3(2f,0f,0f), transform.localRotation);
 			thisBoom.transform.Rotate (0,90,0);
 			thisBoom.rigidbody.velocity = new Vector3(-speed, 0, 0);
 		} else {
-			GameObject thisBoom = (GameObject)Instantiate (fire, transform.position + new Vector3(1.5f,0f,0f), transform.localRotation);
+			GameObject thisBoom = (GameObject)Instantiate (fire, transform.position + new Vector3(2f,0f,0f), transform.localRotation);
 			thisBoom.transform.Rotate (0,-90,0);
 			thisBoom.rigidbody.velocity = new Vector3(speed, 0, 0);
 		}

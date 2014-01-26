@@ -15,4 +15,8 @@ public class FireballBehavior : MonoBehaviour {
 		Instantiate(exploder, transform.position, transform.localRotation);
 		Transform.Destroy (gameObject);
 	}
+
+	void OnBecameInvisible() {
+		Transform.Destroy (gameObject);
+	}
 }
