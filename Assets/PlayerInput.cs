@@ -64,9 +64,9 @@ public class PlayerInput : MonoBehaviour {
                 this.GetComponentInChildren<Camera>().transform.rotation = previousCameraRotation;
             }
 		}
-		if (Input.GetKeyDown ("k") && jump > 0){	// recommended gravity is Y=-40;
-			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, 25, this.rigidbody.velocity.z);
-		}
+		//if (Input.GetKeyDown ("k") && jump > 0){	// recommended gravity is Y=-40;
+			//this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, 25, this.rigidbody.velocity.z);
+		//}
 
         if (Input.GetKeyDown("1") || Input.GetKeyDown(KeyCode.Keypad1))
         {
@@ -123,7 +123,7 @@ public class PlayerInput : MonoBehaviour {
     {
         if (Input.GetKeyDown("k") && IsGrounded())
         {
-            this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, 25, this.rigidbody.velocity.z);
+            this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x, 30, this.rigidbody.velocity.z);
         }
 
     }
