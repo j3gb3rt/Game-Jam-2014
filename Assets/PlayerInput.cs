@@ -6,6 +6,9 @@ public class PlayerInput : MonoBehaviour {
 	public GameObject fire, seed, shield;
 	private float speed;
 	private int facing, world;
+	private int cooldown;
+	private bool shielded;
+	private GameObject heldShield;
 
 	// Use this for initialization
 	void Start () {
@@ -13,13 +16,16 @@ public class PlayerInput : MonoBehaviour {
 		speed = 20f;
 		fire = Resources.Load<GameObject>("fireball");
 		seed = Resources.Load<GameObject> ("Seed");
+		shield = Resources.Load<GameObject> ("Shield");
 		facing = 1;
 		world = 1;
+		cooldown = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//check for inputs
+		cooldown --;
 
 		if (Input.GetKey ("a") && this.rigidbody.velocity.x > -15){
 			this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x - 1.5f, this.rigidbody.velocity.y, this.rigidbody.velocity.z);
@@ -43,15 +49,37 @@ public class PlayerInput : MonoBehaviour {
 			world = 3;
 		}
 
+		if (Input.GetKeyDown ("j") && world == 1) {
+			heldShield = (GameObject)Instantiate (shield, transform.position, transform.localRotation);
+			heldShield.transform.Rotate(0, 0, 90);
+			shielded = true;
+		}
 
-		if (Input.GetKeyDown ("j")){
-			if(world == 1) {
-
+		if (Input.GetKey ("j")){
+			if(cooldown < 1) {
+				if(world == 1) {
+					if(shielded) {
+						if(facing == 0) {
+							heldShield.transform.position = this.transform.position - new Vector3(2,0,0);
+						}
+						else {
+							heldShield.transform.position = this.transform.position + new Vector3(2,0,0);
+						}
+					}
+				}
+				if(world == 2) {
+					shootFireball();
+					cooldown = 30;
+				}
+				else if(world == 3) {
+					throwSeed();
+					cooldown = 60;
+				}
 			}
-			if(world == 2) {
-				shootFireball();
-			}
-			else throwSeed();
+		}
+		if(Input.GetKeyUp ("j")) {
+			Transform.Destroy(heldShield);
+			shielded = false;
 		}
 
 	}
