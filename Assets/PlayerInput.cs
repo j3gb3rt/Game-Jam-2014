@@ -130,11 +130,12 @@ public class PlayerInput : MonoBehaviour {
 
 	void shootFireball(){
 			if (facing == 0) {
-			GameObject thisBoom = (GameObject)Instantiate (fire, transform.position - new Vector3(3f,-2.5f,0f), transform.localRotation);
+				GameObject thisBoom = (GameObject)Instantiate (fire, transform.position - new Vector3(3f,-2.5f,0f), transform.localRotation);
 				thisBoom.rigidbody.velocity = new Vector3(-speed, 0, 0);
+				thisBoom.transform.Rotate (0,180,0);
 			} else {
 			GameObject thisBoom = (GameObject)Instantiate (fire, transform.position + new Vector3(3f,2.5f,0f), transform.localRotation);
-				thisBoom.transform.Rotate (0,-90,0);
+				thisBoom.transform.Rotate (0,180,0);
 				thisBoom.rigidbody.velocity = new Vector3(speed, 0, 0);
 			}
 		}
