@@ -802,7 +802,9 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400004, guid: 5ee7d2c608a961348b3a33055bd24e0f, type: 2}
+    - {fileID: 11400006, guid: 5ee7d2c608a961348b3a33055bd24e0f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 5ee7d2c608a961348b3a33055bd24e0f, type: 2}
   m_RootGameObject: {fileID: 1490323642}
   m_IsPrefabParent: 0
@@ -979,7 +981,6 @@ GameObject:
   - 23: {fileID: 1490323643}
   - 114: {fileID: 1490323647}
   - 54: {fileID: 1490323648}
-  - 114: {fileID: 1490323650}
   - 114: {fileID: 1490323649}
   m_Layer: 0
   m_Name: Player
@@ -1076,18 +1077,6 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1490323642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 293f10a11b19e7e4fac0c0edd8f9e6ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1490323650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400004, guid: 5ee7d2c608a961348b3a33055bd24e0f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1062011351}
   m_GameObject: {fileID: 1490323642}
   m_Enabled: 1
   m_EditorHideFlags: 0
