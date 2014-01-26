@@ -4,7 +4,8 @@ using System.Collections;
 public class Sanic : MonoBehaviour {
     public int face = 0;
     public Transform player;
-    int rage = 1;
+    int rage = 0;
+    int health = 5;
 	// Use this for initialization
 	void Start () {
 	    
@@ -39,6 +40,12 @@ public class Sanic : MonoBehaviour {
                 this.rigidbody.velocity = new Vector3(this.rigidbody.velocity.x + 4f, this.rigidbody.velocity.y, this.rigidbody.velocity.z);
             }
         }
+
+        if(health<=0){
+            Transform.Destroy(gameObject);
+        }
+
+
 	}
 
     void OnTriggerStay(Collider other)
@@ -52,6 +59,23 @@ public class Sanic : MonoBehaviour {
         {
             rage = 0;
             face = 0;
+        }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.name.Equals("Sanic"))
+        {
+            if (face == 0) face = 1;
+            else face = 0;
+        }
+
+        
+
+        if (other.gameObject.tag.Equals("projectile"))
+        {
+            health--;
+            print("HIT SANIC!!");
         }
     }
 }
