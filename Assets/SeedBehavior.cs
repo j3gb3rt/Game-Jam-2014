@@ -15,12 +15,13 @@ public class SeedBehavior : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter() {
-		//if(collider.tag.Equals("Ground")) {
+	void OnCollisionEnter(Collision other) {
+		if(other.gameObject.tag.Equals("Ground")) {
 			GameObject tree = Resources.Load<GameObject>("GrownTree");
 			Instantiate(tree, transform.position, transform.localRotation);
-		//}
+		}
 		Transform.Destroy (gameObject);
+		
 	}
 
 	void OnBecameInvisible() {
